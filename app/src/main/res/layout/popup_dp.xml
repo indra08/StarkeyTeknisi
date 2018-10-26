@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:background="@color/colorPutih">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPutih">
+
+        <TextView
+            android:id="@+id/txtCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorHitam"
+            android:text="Masukan DP"
+            android:fontFamily="serif-monospace"/>
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_cacel_red"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/header">
+
+        <TextView
+            android:id="@+id/textphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dp"
+            android:textSize="28dp"
+            android:textColor="@color/colorHitam"
+            android:textStyle="bold"
+            android:fontFamily="serif-monospace"/>
+
+        <EditText
+            android:id="@+id/etDPStempel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:layout_below="@+id/textphone"
+            android:drawableRight="@drawable/ic_percent_small"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="*) Nominal DP dalam persen"
+            android:layout_below="@+id/etDPStempel"/>
+
+        <Button
+            android:id="@+id/btnSimpanDP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etDPStempel"
+            android:textColor="@color/colorPutih"
+            android:text="Simpan"
+            android:background="@color/colorPrimary"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

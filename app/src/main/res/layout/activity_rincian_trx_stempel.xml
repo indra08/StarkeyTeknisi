@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.starkey.mitra.Stempel.RincianTrxStempel.RincianTrxStempelActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/labelMainRincianTrxStemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Rincian Transaksi"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvDetailItemRincianStemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@+id/labelMainRincianTrxStemp"
+            android:layout_marginTop="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/labelRincianTipeStemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tipe Stempel:"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvTipeStempRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ppp"
+                    android:textSize="18dp"
+                    android:layout_alignParentRight="true"/>
+
+                <TextView
+                    android:id="@+id/labelUkuranStempRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ukuran:"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/labelRincianTipeStemp"/>
+
+                <TextView
+                    android:id="@+id/tvUkuranStempRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ooo"
+                    android:layout_below="@+id/tvTipeStempRincian"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/labelQtyStempRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity:"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/labelUkuranStempRincian"/>
+
+                <TextView
+                    android:id="@+id/tvQtyStempRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvUkuranStempRincian"
+                    android:textSize="18dp"
+                    android:text="qqq"/>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@+id/cvDetailItemRincianStemp"
+            android:layout_marginTop="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/labelEstimasiRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvEstimasiRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xxx"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"/>
+
+
+
+                <TextView
+                    android:id="@+id/labelBiayaLainRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jasa"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/labelEstimasiRincianKunci"/>
+
+                <TextView
+                    android:id="@+id/tvBiayaLainStempelRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="yyy"
+                    android:layout_below="@+id/tvEstimasiRincianKunci"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/labelBiayaLainNewRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya Lain"
+                    android:layout_below="@+id/labelBiayaLainRincianKunci"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvBiayaLainNewRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"
+                    android:text="LLL"
+                    android:layout_below="@+id/tvBiayaLainStempelRincian"/>
+
+                <TextView
+                    android:id="@+id/labelDpRincianStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DP"
+                    android:layout_below="@+id/labelBiayaLainNewRinKunci"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvDpStempelRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ddd"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/tvBiayaLainNewRinKunci"/>
+
+                <TextView
+                    android:id="@+id/labelGrandTotalRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grand Total"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMerah"
+                    android:layout_below="@+id/labelDpRincianStempel"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/tvGrandTotalRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aaa"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/tvDpStempelRincian"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMerah"/>
+
+                <TextView
+                    android:id="@+id/labelTipsRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tips"
+                    android:layout_below="@+id/labelGrandTotalRincianKunci"/>
+
+                <TextView
+                    android:id="@+id/tvTipsStempelRincian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="zzz"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvGrandTotalRincianKunci"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bSimpanTrxStemp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_button_kotak"
+        android:text="Simpan"
+        android:textColor="@color/colorPutih"/>
+
+</RelativeLayout>

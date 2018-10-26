@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a19ca0">
+
+
+    <!-- START LAYOUT ADA -->
+    <RelativeLayout
+        android:id="@+id/layoutAdaShare"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp">
+
+        <RelativeLayout
+            android:id="@+id/layoutShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/tvProfitMitra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp. 0"
+                android:padding="8dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPutih"/>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recyclerViewHistoryShare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layoutShare"
+            android:padding="8dp">
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+    <!-- END LAYOUT ADA -->
+
+    <!-- START LAYOUT KOSONG -->
+    <RelativeLayout
+        android:id="@+id/layoutKosongShare"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/imgViewKosongShare"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_data"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgViewKosongShare"
+            android:layout_centerHorizontal="true"
+            android:text="No Data"/>
+
+    </RelativeLayout>
+    <!-- END LAYOUT KOSONG -->
+
+
+</RelativeLayout>

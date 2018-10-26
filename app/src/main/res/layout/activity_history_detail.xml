@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.starkey.mitra.HistoryDetail.HistoryDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appBarDetailHistory">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarDetailHistory"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.AppBarOverlay" >
+    
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layoutDetailHistoryUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarDetailHistory"
+        android:padding="8dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tvTglHistoryDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tgl"
+            android:textColor="@color/colorPutih"/>
+
+        <TextView
+            android:id="@+id/tvIdHistoryDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="id"
+            android:textColor="@color/colorPutih"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutDetailHistoryUp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvTopHistoryDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvTypeItemJenis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="TypeItemJenis"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/labelHargaItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTypeItemJenis"
+                    android:text="Biaya"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/tvHargaItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"
+                    android:layout_below="@+id/tvTypeItemJenis"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/labelJasa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jasa"
+                    android:layout_below="@+id/labelHargaItem"/>
+
+                <TextView
+                    android:id="@+id/tvJasa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"
+                    android:layout_below="@+id/tvHargaItem"/>
+
+                <TextView
+                    android:id="@+id/labelBiayaLainDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya Lain"
+                    android:layout_below="@+id/labelJasa"/>
+
+                <TextView
+                    android:id="@+id/tvBiayaLainDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvJasa"
+                    android:text="Rp. 0"/>
+
+                <TextView
+                    android:id="@+id/labelGrandTotalDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grand Total"
+                    android:layout_below="@+id/labelBiayaLainDetailHistory"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/colorMerah"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvGrandTotalDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"
+                    android:layout_below="@+id/tvBiayaLainDetailHistory"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/colorMerah"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/labelTipsDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tips"
+                    android:layout_below="@+id/labelGrandTotalDetailHistory"/>
+
+                <TextView
+                    android:id="@+id/tvTipsDetailHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"
+                    android:layout_below="@+id/tvGrandTotalDetailHistory"/>
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvMidHistoryDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvTopHistoryDetail"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvNamaPelanggan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="namapelanggan"/>
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/circularIVHistoryDetail"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/tvNamaPelanggan"/>
+
+                <TextView
+                    android:id="@+id/tvAlamatDetailHistory"
+                    android:layout_toRightOf="@+id/tvNamaPelanggan"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="alamat"
+                    android:maxLines="3"
+                    android:lines="3"/>
+
+                <View
+                    android:id="@+id/linesatuDetailHistory"
+                    android:layout_width = "match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/empty"
+                    android:layout_below="@+id/tvAlamatDetailHistory"
+                    android:layout_toRightOf="@id/tvNamaPelanggan"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvKomenPelanggan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tvNamaPelanggan"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/linesatuDetailHistory"
+                    android:layout_marginTop="8dp"
+                    android:text="komen"
+                    android:maxLines="3"
+                    android:lines="3"/>
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/ratingbarHistoryDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_below="@+id/circularIVHistoryDetail" />
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvMidHistoryDetail"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/labelShareProfit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Share Profit"/>
+
+                <TextView
+                    android:id="@+id/tvShareProfitHistoryDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"/>
+
+                <TextView
+                    android:id="@+id/labelSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Saldo"
+                    android:layout_below="@+id/labelShareProfit"/>
+
+                <TextView
+                    android:id="@+id/tvSaldoHistoryDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvShareProfitHistoryDetail"
+                    android:text="Rp. 0"/>
+
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

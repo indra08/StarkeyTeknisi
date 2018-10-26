@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvHistorySelesai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/labelOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order ID:"/>
+
+            <TextView
+                android:id="@+id/tvOrderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/labelOrderId"
+                android:layout_marginLeft="4dp"/>
+
+            <TextView
+                android:id="@+id/tvTglShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="tgl"
+                android:textStyle="bold"
+                android:textColor="@color/colorHitam"/>
+
+            <TextView
+                android:id="@+id/tvNamaLayananShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="namalayanan"
+                android:layout_below="@+id/labelOrderId"/>
+
+            <TextView
+                android:id="@+id/tvJenisItemShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="jenisitem"
+                android:layout_below="@+id/tvNamaLayananShare"/>
+
+            <TextView
+                android:id="@+id/tvShareProfit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNamaLayananShare"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorMerah"
+                android:textStyle="bold"
+                android:text="Rp. 0"/>
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

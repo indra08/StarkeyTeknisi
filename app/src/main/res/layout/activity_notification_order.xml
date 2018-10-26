@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAbuAbu"
+    tools:context="id.starkey.mitra.NotificationOrder.NotificationOrder">
+
+    <Button
+        android:id="@+id/btnTolakKunci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOLAK"
+        android:background="#0000"
+        android:layout_alignParentRight="true"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="visible"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tvJenisLayanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jenislayanan"
+            android:textColor="@color/colorPutih"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvJenisLayanan"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transaksi:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/labelJenisLayanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Layanan:"
+                    android:layout_below="@+id/labelTransaksi"/>
+
+                <TextView
+                    android:id="@+id/tvNamaKuncidanLayanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="layanandantype"
+                    android:layout_below="@+id/labelTransaksi"
+                    android:layout_toRightOf="@+id/labelJenisLayanan"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:id="@+id/labelKeterangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keterangan:"
+                    android:layout_below="@+id/labelQty"/>
+
+                <TextView
+                    android:id="@+id/tvKetKunci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xketerangan"
+                    android:layout_below="@+id/labelKeterangan"
+                    android:lines="3"
+                    android:maxLines="3"/>
+
+                <TextView
+                    android:id="@+id/labelJenisKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jenis Kunci:"
+                    android:layout_below="@+id/labelJenisLayanan"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/labelMerk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Merk:"
+                    android:layout_below="@+id/labelJenisKunci"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/labelType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type:"
+                    android:layout_below="@+id/labelMerk"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/labelQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qty:"
+                    android:layout_below="@+id/labelType"/>
+
+                <TextView
+                    android:id="@+id/tvQtyKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xQty"
+                    android:layout_below="@id/labelType"
+                    android:layout_toRightOf="@+id/labelQty"
+                    android:layout_marginLeft="4dp"/>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvNotifOrderDetail"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelAlamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageMarkerAlamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_marker"
+                    android:layout_below="@+id/labelAlamat"/>
+
+                <TextView
+                    android:id="@+id/tvAlamatCust"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CV. Ezatech"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:layout_below="@+id/labelAlamat"
+                    android:layout_toRightOf="@id/imageMarkerAlamat"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderEstimasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvNotifOrderAlamat"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelestimasiTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimasi Transaksi"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvEstimasiTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 000"
+                    android:layout_toRightOf="@+id/labelestimasiTransaksi"
+                    android:layout_marginLeft="4dp"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <!-- OLD design -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fafafa"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvJenisLayananold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KUNCI"
+            android:textColor="@color/colorAbuBiru"
+            android:textSize="17sp"
+            android:layout_gravity="center"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Transaksi"
+                        android:textColor="@color/colorAbuBiru"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvNamaKuncidanLayananold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Duplikat Kunci Gerbang"
+                        android:textColor="@color/colorAbuBiru" />
+
+                    <TextView
+                        android:id="@+id/tvQtyKunciold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="right"
+                        android:text="x1"
+                        android:textColor="@color/colorAbuBiru" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvKetKunciold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:paddingBottom="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="Kuncikuncikuncikuncikuncikuncikunci\nkuncikuncikuncikuncikuncikuncikuncikuncikunci\nkuncikuncikuncikuncikuncikuncikuncikuncikunci"
+                    android:textColor="@color/colorAbuBiru" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAbuBiru" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Alamat Antar"
+                        android:textColor="@color/colorAbuBiru"
+                        android:textSize="17sp" />
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_edittext_putih"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_action_marker" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvAlamatCustold"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CV. Ezatech"
+                            android:textColor="@color/colorAbuAbu"
+                            android:maxLines="2"
+                            android:lines="2"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAbuBiru" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="left"
+                    android:padding="16dp"
+                    android:text="Detail"
+                    android:textColor="@color/colorAbuBiru"
+                    android:textSize="17sp" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:gravity="left"
+                        android:text="Estimasi Transaksi"
+                        android:textColor="@color/colorAbuBiru" />
+
+                    <TextView
+                        android:id="@+id/tvEstimasiTransaksiold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="right"
+                        android:text="Rp 000"
+                        android:textColor="@color/colorAbuBiru" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Antar Kirim"
+                        android:textColor="@color/colorAbuBiru"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="right"
+                        android:text="Rp 2000"
+                        android:textColor="@color/colorAbuBiru"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorAbuBiru"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="Biaya"
+                        android:textColor="@color/colorAbuBiru"
+                        android:textSize="17sp"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="right"
+                        android:text="Rp 7000"
+                        android:textColor="@color/colorMerah"
+                        android:textSize="17sp"
+                        android:visibility="invisible"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnTerimaOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_button_kotak"
+        android:text="Terima Order"
+        android:textColor="@color/colorPutih"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

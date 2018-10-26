@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAbuAbu"
+    tools:context="id.starkey.mitra.NotificationOrder.NotificationOrderStempel">
+
+    <Button
+        android:id="@+id/btnTolakStempel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TOLAK"
+        android:background="#0000"
+        android:layout_alignParentRight="true"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:visibility="visible"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tvJenisLayananStempel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="jenislayanan"
+            android:textColor="@color/colorPutih"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderDetailStemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvJenisLayananStempel"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Transaksi:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/labelJenisStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stempel:"
+                    android:layout_below="@+id/labelTransaksi"/>
+
+                <TextView
+                    android:id="@+id/tvJenisStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xJenisStempel"
+                    android:layout_below="@+id/labelTransaksi"
+                    android:layout_toRightOf="@+id/labelJenisStempel"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:id="@+id/labelUkuranStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ukuran:"
+                    android:layout_below="@+id/labelJenisStempel"/>
+
+                <TextView
+                    android:id="@+id/tvUkuranStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvJenisStempel"
+                    android:layout_toRightOf="@+id/labelUkuranStempel"
+                    android:layout_marginLeft="4dp"/>
+
+                <TextView
+                    android:id="@+id/labelKeterangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keterangan:"
+                    android:layout_below="@+id/labelQty"/>
+
+                <TextView
+                    android:id="@+id/tvKetStempel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="xketerangan"
+                    android:layout_below="@+id/labelKeterangan"
+                    android:lines="3"
+                    android:maxLines="3"/>
+
+                <TextView
+                    android:id="@+id/labelQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Qty:"
+                    android:layout_below="@+id/labelUkuranStempel"/>
+
+                <TextView
+                    android:id="@+id/tvQtyStemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="xQty"
+                    android:layout_below="@id/labelUkuranStempel"
+                    android:layout_toRightOf="@+id/labelQty"
+                    android:layout_marginLeft="4dp"/>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderAlamatStempel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvNotifOrderDetailStemp"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelAlamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageMarkerAlamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_action_marker"
+                    android:layout_below="@+id/labelAlamat"/>
+
+                <TextView
+                    android:id="@+id/tvAlamatCustStempel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CV. Ezatech"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:layout_below="@+id/labelAlamat"
+                    android:layout_toRightOf="@id/imageMarkerAlamat"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvNotifOrderEstimasiStempel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cvNotifOrderAlamatStempel"
+            app:cardCornerRadius="6dp"
+            android:layout_marginTop="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/labelestimasiTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estimasi Transaksi"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvEstimasiTransaksiStempel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp 000"
+                    android:layout_toRightOf="@+id/labelestimasiTransaksi"
+                    android:layout_marginLeft="4dp"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnTerimaOrderStempel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_button_kotak"
+        android:text="Terima Order"
+        android:textColor="@color/colorPutih"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">StarKeyTeknisi</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="pull_down">Tarik kebawah untuk mengulang</string>
+    <string name="error_request">Request error</string>
+    <string name="runtime_permissions_txt">Akses sangat dibutuhkan untuk menjalankan aplikasi</string>
+</resources>

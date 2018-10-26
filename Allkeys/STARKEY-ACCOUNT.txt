@@ -1,0 +1,16 @@
+========= google dev account ======
+email : office.starkey@gmail.com
+pass : @starkey.id12
+
+======== APK Starkey Customer ========
+filename : starkeycustomerkeystore.jks
+pass keystore path : @starkey.id12
+alias : starkeydevelopment
+password : starkey.id12
+
+======== APK Starkey Teknisi ========
+filename : starkeyteknisikeystore.jks
+pass keystore path : @starkey.id12
+alias : starkeyteknisidevelopment
+password : starkey.id12
+

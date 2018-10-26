@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/mapHomeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_activity">
+
+    <!-- START MAP -->
+    <fragment
+        android:id="@+id/mapMainMenu"
+        class="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="170dp"/>
+    <!-- END MAP -->
+
+
+    <!-- START MAIN COKLAT -->
+    <RelativeLayout
+        android:id="@+id/mainCoklat"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home_bg">
+
+        <TextView
+            android:id="@+id/labelSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:text="Saldo"
+            android:textStyle="bold"
+            android:textColor="@color/colorHitam"
+            android:layout_marginTop="5dp"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/tvSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:text="IDR 0"
+            android:textStyle="bold"
+            android:textColor="@color/colorHitam"
+            android:textSize="18dp"
+            android:layout_below="@+id/labelSaldo"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/tvPendapatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:text="Pendapatan"
+            android:textStyle="bold"
+            android:textColor="@color/colorHitam"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/tvPendapatanMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:textStyle="bold"
+            android:textColor="@color/colorHitam"
+            android:layout_below="@+id/tvPendapatan"
+            android:layout_alignParentRight="true"
+            android:text="IDR 0"
+            android:textSize="18dp"
+            android:layout_marginRight="5dp"/>
+
+        <!-- START MAIN HITAM -->
+        <RelativeLayout
+            android:id="@+id/mainBlack"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@+id/tvPendapatanMain"
+            android:background="@color/colorHitam"
+            android:layout_marginBottom="6dp">
+
+            <ImageView
+                android:id="@+id/ivPenerimaan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/icon_penerimaan_teknisi"/>
+
+            <ImageView
+                android:id="@+id/ivPenilaian"
+                android:src="@drawable/icon_penilaian_teknisi"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+
+            <ImageView
+                android:id="@+id/ivPembatalan"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/icon_pembatalan_teknisi"/>
+
+            <TextView
+                android:id="@+id/tvValuePenerimaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:text="0"
+                android:textColor="@color/colorPrimaryGreen"
+                android:textSize="16dp"
+                android:layout_below="@+id/ivPenerimaan"
+                android:layout_marginLeft="40dp"/>
+
+            <TextView
+                android:id="@+id/tvValuePenilaian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryGreen"
+                android:text="0"
+                android:layout_below="@+id/ivPenilaian"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:id="@+id/tvValuePembatalan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:textSize="16dp"
+                android:textColor="@color/colorPrimaryGreen"
+                android:text="0"
+                android:layout_below="@+id/ivPembatalan"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"/>
+
+            <TextView
+                android:id="@+id/tvPenerimaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:textSize="16dp"
+                android:textColor="@color/colorPutih"
+                android:text="Penerimaan"
+                android:layout_below="@+id/tvValuePenerimaan"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:id="@+id/tvPenilaian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:textSize="16dp"
+                android:textColor="@color/colorPutih"
+                android:text="Penilaian"
+                android:layout_below="@+id/tvValuePenilaian"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:textSize="16dp"
+                android:textColor="@color/colorPutih"
+                android:text="Pembatalan"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tvValuePembatalan"
+                android:layout_marginRight="4dp"/>
+
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STATUS ON"
+            android:textStyle="bold"
+            android:layout_below="@+id/mainBlack"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"/>
+        <!-- END MAIN HITAM -->
+    </RelativeLayout>
+    <!-- END MAIN COKLAT -->
+
+</RelativeLayout>

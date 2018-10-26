@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="2dp">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/lblnamabarangtrxbahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="namabarang"/>
+
+            <TextView
+                android:id="@+id/lblqtytrxbahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="qty"
+                android:layout_below="@+id/lblnamabarangtrxbahan"/>
+
+            <TextView
+                android:id="@+id/lblhargatrxbahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="harga"
+                android:layout_below="@+id/lblqtytrxbahan"/>
+
+            <TextView
+                android:id="@+id/labelSubDetBahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SubTotal"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/lblhargatrxbahan"/>
+
+            <TextView
+                android:id="@+id/lblsubtotaltrxbahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="subtotal"
+                android:textColor="@color/colorMerah"
+                android:textStyle="bold"
+                android:layout_below="@+id/labelSubDetBahan"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

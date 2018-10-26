@@ -1,0 +1,16 @@
+
+<!--
+  ~ Copyright (c) 2017. Gilang Ramadhan (gilangramadhan96.gr@gmail.com)
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:endColor="@color/colorPrimaryDark"
+                android:startColor="@color/colorPrimaryDark"></gradient>
+            <corners android:radius="20dp"></corners>
+            <stroke android:width="3dp" android:color="@color/colorPrimaryDark"></stroke>
+        </shape>
+
+    </item>
+</selector>

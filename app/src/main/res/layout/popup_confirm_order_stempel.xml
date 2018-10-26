@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/judulPopupConfirmStempel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Pastikan Pesanan Stempel"
+        android:textColor="@color/colorHitam"
+        android:fontFamily="serif-monospace"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/btnBatalPopStempel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:layout_below="@+id/judulPopupConfirmStempel"
+        android:background="@color/colorDarkMerah"
+        android:textColor="@color/colorPutih"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:id="@+id/btnAdaPopStempel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ada"
+        android:layout_below="@+id/judulPopupConfirmStempel"
+        android:background="@drawable/background_button_kotak"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorPutih"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pesanan tidak ada"
+        android:layout_below="@+id/btnBatalPopStempel"
+        android:textColor="@color/colorHitam"/>
+
+</RelativeLayout>

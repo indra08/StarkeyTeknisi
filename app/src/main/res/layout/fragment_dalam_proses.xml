@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a19ca0">
+
+    <!-- START LAYOUT KOSONG -->
+    <RelativeLayout
+        android:id="@+id/layoutKosongSelesai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgViewKosongSelesai"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_data"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgViewKosongSelesai"
+            android:layout_centerHorizontal="true"
+            android:text="No Data"/>
+
+    </RelativeLayout>
+    <!-- END LAYOUT KOSONG -->
+
+</RelativeLayout>

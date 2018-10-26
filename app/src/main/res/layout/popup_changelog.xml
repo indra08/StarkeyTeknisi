@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layoutTopChangeLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/lblvAppChangeLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vapp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/lblJudulChangeLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="judul"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutKetAwalChangeLong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/layoutTopChangeLog"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/lblKetAwalChangeLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KetAwal"/>
+
+    </LinearLayout>
+
+    <!--<View-->
+    <!--android:id="@+id/lineBottom"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="2dp"-->
+    <!--android:background="@color/empty"-->
+    <!--android:layout_below="@+id/layoutKetAwalChangeLong"-->
+    <!--android:layout_marginTop="8dp"/>-->
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/layoutWebviewChangeLog"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@+id/layoutKetAwalChangeLong"-->
+    <!--android:layout_above="@+id/layoutKetAkhirChangeLog"-->
+    <!--tools:ignore="WebViewLayout">-->
+
+    <WebView
+        android:id="@+id/webViewChangeLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutKetAwalChangeLong"
+        android:layout_above="@+id/layoutKetAkhirChangeLog"/>
+
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+    <!--android:id="@+id/lineBottom2"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="2dp"-->
+    <!--android:background="@color/empty"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_above="@+id/layoutKetAkhirChangeLog"/>-->
+
+    <LinearLayout
+        android:id="@+id/layoutKetAkhirChangeLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_above="@+id/btnOkeChangeLog">
+
+        <TextView
+            android:id="@+id/lblKetAkhirChangeLog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KetAkhir"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnOkeChangeLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@null"/>
+
+</RelativeLayout>

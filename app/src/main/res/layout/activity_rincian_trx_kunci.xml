@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_activity"
+    tools:context="id.starkey.mitra.Kunci.RincianTrxKunci.RincianTrxKunciActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/labelMainRincianTrxKunci"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Rincian Transaksi"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cvDetailItemRincianKunci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@+id/labelMainRincianTrxKunci"
+            android:layout_marginTop="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/labelRincianLayananKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Layanan:"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvLayananRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ppp"
+                    android:textSize="18dp"
+                    android:layout_alignParentRight="true"/>
+
+                <TextView
+                    android:id="@+id/labelKunciRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kunci:"
+                    android:textSize="18dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/labelRincianLayananKunci"/>
+
+                <TextView
+                    android:id="@+id/tvKunciItemRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ooo"
+                    android:layout_below="@+id/tvLayananRincianKunci"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"
+                    android:layout_marginTop="16dp"/>
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="8dp"
+            android:layout_below="@+id/cvDetailItemRincianKunci"
+            android:layout_marginTop="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/labelHargaItemRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvHargaItemRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp. 0"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/labelJasaBiayaLain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jasa"
+                    android:textSize="18dp"
+                    android:layout_below="@+id/labelHargaItemRincianKunci"/>
+
+                <TextView
+                    android:id="@+id/tvJasaBiayaLayanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Rp. 0"
+                    android:layout_below="@+id/tvHargaItemRincianKunci"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/labelBiayaLainRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya Lain"
+                    android:layout_below="@+id/labelJasaBiayaLain"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/tvBiayaLainRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bbb"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvJasaBiayaLayanan"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/labelGrandTotalRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grand Total"
+                    android:layout_below="@+id/labelBiayaLainRinKunci"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMerah"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/tvGrandTotalRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvBiayaLainRinKunci"
+                    android:text="ggg"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorMerah"
+                    android:layout_marginTop="16dp"/>
+
+
+                <TextView
+                    android:id="@+id/labelTipsRincianKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tips"
+                    android:layout_below="@+id/labelGrandTotalRinKunci"/>
+
+                <TextView
+                    android:id="@+id/tvTipsRinKunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tvGrandTotalRinKunci"
+                    android:text="ttt"/>
+
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bSimpanTrxKunci"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_button_kotak"
+        android:text="Simpan"
+        android:textColor="@color/colorPutih"/>
+
+</RelativeLayout>
