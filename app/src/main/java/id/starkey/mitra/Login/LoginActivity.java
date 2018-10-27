@@ -306,7 +306,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
                     // contacts-related task you need to do.
 
-                    gps = new GPSTracker(mContext, LoginActivity.this);
+                    /*gps = new GPSTracker(mContext, LoginActivity.this);
 
                     // Check if GPS enabled
                     if (gps.canGetLocation()) {
@@ -321,7 +321,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                         // GPS or network is not enabled.
                         // Ask user to enable GPS/network in settings.
                         gps.showSettingsAlert();
-                    }
+                    }*/
 
                 } else {
 
@@ -497,5 +497,11 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("firebaseUser", firebaseToken);
         editor.commit();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(broadcastReceiver);
+        super.onStop();
     }
 }

@@ -1,5 +1,6 @@
 package id.starkey.mitra;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -14,6 +16,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
@@ -30,6 +33,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -60,6 +64,7 @@ import id.starkey.mitra.Utilities.GPSTracker;
 
 import id.starkey.mitra.BuildConfig;
 import id.starkey.mitra.R;
+import id.starkey.mitra.Utilities.ItemValidation;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -73,6 +78,7 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.kyleduo.switchbutton.SwitchButton;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -122,11 +128,17 @@ public class MainActivity extends AppCompatActivity
     static MainActivity mainActivity;
     private boolean dialogActive = false;
     public static boolean isBatal = false;
+    private String version = "", latestVersion = "", link = "";
+    private AlertDialog builderVersion;
+    private boolean updateRequired = false;
+    private ItemValidation iv = new ItemValidation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Menu");
@@ -200,7 +212,7 @@ public class MainActivity extends AppCompatActivity
         headerPhone = headerview.findViewById(R.id.phoneHeader);
 
         //from gpstracker class
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+       /* if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
         } else {
@@ -221,7 +233,7 @@ public class MainActivity extends AppCompatActivity
                 // Ask user to enable GPS/network in settings.
                 gps.showSettingsAlert();
             }
-        }
+        }*/
 
         //get detail from preference
         getPref();
@@ -273,7 +285,132 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
+
         super.onResume();
+
+        checkVersion();
+    }
+
+    private void checkVersion(){
+
+        PackageInfo pInfo = null;
+        version = "";
+
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        version = pInfo.versionName;
+        //getSupportActionBar().setSubtitle(getResources().getString(R.string.app_name) + " v "+ version);
+        //tvVersion.setText(getResources().getString(R.string.app_name) + " v "+ version);
+        latestVersion = "";
+        link = "";
+
+        // Post params to be sent to the server
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("flag_app", "mitra");
+
+        JsonObjectRequest request_json = new JsonObjectRequest(Request.Method.POST ,ConfigLink.getVersion, new JSONObject(params),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        if(builderVersion != null){
+                            if(builderVersion.isShowing()) builderVersion.dismiss();
+                        }
+
+                        try {
+
+                            String status = response.getString("status");
+                            if(status.equals("success")){
+
+                                JSONArray ja = response.getJSONArray("data");
+                                if(ja.length() > 0){
+
+                                    JSONObject jo = ja.getJSONObject(0);
+                                    latestVersion = jo.getString("versi");
+                                    link = jo.getString("link");
+                                    updateRequired = (iv.parseNullInteger(jo.getString("status")) == 1) ? true : false;
+                                    if(!version.trim().equals(latestVersion.trim()) && link.length() > 0){
+
+                                        if(updateRequired){
+
+                                            builderVersion = new AlertDialog.Builder(mContext)
+                                                    .setIcon(R.mipmap.icon_starkey_mitra_curved)
+                                                    .setTitle("Update")
+                                                    .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon update ke versi terbaru.")
+                                                    .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                                            startActivity(browserIntent);
+                                                        }
+                                                    })
+                                                    .setCancelable(false)
+                                                    .show();
+                                        }else{
+
+                                            builderVersion = new AlertDialog.Builder(mContext)
+                                                    .setIcon(R.mipmap.icon_starkey_mitra_curved)
+                                                    .setTitle("Update")
+                                                    .setMessage("Versi terbaru "+latestVersion+" telah tersedia, mohon update ke versi terbaru.")
+                                                    .setPositiveButton("Update Sekarang", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                                                            startActivity(browserIntent);
+                                                        }
+                                                    })
+                                                    .setNegativeButton("Update Nanti", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            //dialogInterface.dismiss();
+                                                        }
+                                                    }).show();
+                                        }
+                                    }
+                                }
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                //VolleyLog.e("Err Volley: ", error.getMessage());
+                //error.printStackTrace();
+                String message = null;
+                if (error instanceof NetworkError) {
+                    message = "Tidak ada koneksi Internet";
+                } else if (error instanceof ServerError) {
+                    message = "Server tidak ditemukan";
+                } else if (error instanceof AuthFailureError) {
+                    message = "Tidak ada koneksi Internet";
+                } else if (error instanceof ParseError) {
+                    message = "Parsing data Error";
+                } else if (error instanceof TimeoutError) {
+                    message = "Connection TimeOut";
+                }
+                Toast.makeText(getApplicationContext(),message, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        int socketTimeout = 30000; //30 detik
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        // add the request object to the queue to be executed
+        //RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //requestQueue.add(request_json);
+        request_json.setRetryPolicy(policy);
+        RequestHandler.getInstance(this).addToRequestQueue(request_json);
     }
 
     public void locationAccessChecker() {
@@ -1206,6 +1343,22 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_LOCATION) {
+                displaySelectedScreen(R.id.nav_home);
+            }
+        }
+        if (resultCode == Activity.RESULT_CANCELED){
+            Toast.makeText(mContext, "Anda harus mengaktifkan GPS anda untuk menjalankan aplikasi ini", Toast.LENGTH_SHORT).show();
+            //finish();
+        }
+
     }
 
     private void saveLocationGps(String lat, String lng){

@@ -22,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +42,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import id.starkey.mitra.ConfigLink;
+import id.starkey.mitra.MainActivity;
 import id.starkey.mitra.MyHandler;
 import id.starkey.mitra.R;
 import id.starkey.mitra.RequestHandler;
@@ -110,6 +112,7 @@ public class OrderStempelActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_stempel);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         orderStempelActivity = this;
 
@@ -1052,6 +1055,8 @@ public class OrderStempelActivity extends AppCompatActivity implements
                             String konStatus = response.getString("status");
                             if (konStatus.equals("success")){
                                 String msge = response.getString("message");
+                                MainActivity.isBatal = true;
+                                finish();
 
                             } else {
                                 //String konStatus = response.getString("status");
@@ -1061,7 +1066,7 @@ public class OrderStempelActivity extends AppCompatActivity implements
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        finish();
+                        //finish();
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -120,4 +120,7 @@ public class ConfigLink {
 
     //changelog info
     public static final String changeLogInfo = BASE_URL + "/api/v1/app_changelog?";
+
+    //API V1.2
+    public static final String getVersion = BASE_URL + "/api/v1.2/update_versi";
 }
