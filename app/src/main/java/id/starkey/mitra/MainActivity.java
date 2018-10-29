@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
-        MyHandler.resumeMyHandler(runnablestatus);
+
         locationAccessChecker();
         if(isBatal){
             isBatal = false;
@@ -285,7 +285,7 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-
+        MyHandler.resumeMyHandler(runnablestatus);
         super.onResume();
 
         checkVersion();
