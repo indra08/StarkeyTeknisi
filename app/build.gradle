@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'starkeyteknisidevelopment'
             keyPassword 'starkey.id12'
-            storeFile file('E:/7. PROJEK/CV.EZATECH/STARKEY [Mobile]/Develop Apps/StarKeyTeknisi/Allkeys/starkeyteknisikeystore.jks')
+            storeFile file('E:/Project/EzaTech/StarKeyTeknisi/Allkeys/starkeyteknisikeystore.jks')
             storePassword '@starkey.id12'
         }
     }
@@ -14,8 +14,8 @@ android {
         applicationId "id.starkey.mitra"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 10
-        versionName "0.0.21"
+        versionCode 11
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
