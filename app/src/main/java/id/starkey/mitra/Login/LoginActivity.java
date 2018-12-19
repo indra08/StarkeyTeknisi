@@ -501,7 +501,11 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
     @Override
     protected void onStop() {
-        unregisterReceiver(broadcastReceiver);
+
+        try {
+            unregisterReceiver(broadcastReceiver);
+        }catch (Exception e){e.printStackTrace();}
+
         super.onStop();
     }
 }
