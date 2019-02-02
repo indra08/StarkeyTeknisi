@@ -495,7 +495,11 @@ public class MainActivity extends AppCompatActivity
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        loading.dismiss();
+
+                        try {
+                            loading.dismiss();
+                        }catch (Exception e){e.printStackTrace();}
+
                         Log.d("outKunci", response.toString());
                         try {
                             JSONObject joData = response.getJSONObject("data");
@@ -519,7 +523,9 @@ public class MainActivity extends AppCompatActivity
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                loading.dismiss();
+                try {
+                    loading.dismiss();
+                }catch (Exception e){e.printStackTrace();}
                 //VolleyLog.e("Err Volley: ", error.getMessage());
                 error.printStackTrace();
 

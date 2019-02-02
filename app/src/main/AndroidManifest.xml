@@ -125,12 +125,14 @@
 
         <activity
             android:name="id.starkey.mitra.NotificationOrder.NotificationOrder"
+            android:showOnLockScreen="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="id.starkey.mitra.Stempel.FixOrderStempelActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="id.starkey.mitra.NotificationOrder.NotificationOrderStempel"
+            android:showOnLockScreen="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="id.starkey.mitra.Stempel.PilihProdusenStemp.PilihProdusenStempelActivity"
