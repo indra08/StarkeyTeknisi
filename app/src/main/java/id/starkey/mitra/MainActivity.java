@@ -65,6 +65,7 @@ import id.starkey.mitra.Utilities.GPSTracker;
 import id.starkey.mitra.BuildConfig;
 import id.starkey.mitra.R;
 import id.starkey.mitra.Utilities.ItemValidation;
+import id.starkey.mitra.Utilities.StatusMitra;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity
     private double latFromClass = -7.0160395, lngFromClass = 110.4630368;
     //private ToggleButton mSwitchStatus;
     private SwitchButton switchButtonStatus;
-    public String sStatusAvail = "0";
+    public static String sStatusAvail = "0";
     private GoogleApiClient googleApiClient;
 
     //interval
@@ -246,7 +247,7 @@ public class MainActivity extends AppCompatActivity
 
         mainActivity = this;
         dialogActive = false;
-        isBatal = false;
+        //isBatal = false;
     }
 
     public static MainActivity getInstance(){
@@ -266,29 +267,18 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
 
         locationAccessChecker();
+
         if(isBatal){
             isBatal = false;
             sStatusAvail = "0";
             updatePosisiMitra(sStatusAvail, sLat, sLng, sFirebaseToken);
         }
 
-        try {
-            if(switchButtonStatus != null){
-
-                if(sStatusAvail.equals("1")){
-                    switchButtonStatus.setChecked(true);
-                }else{
-                    switchButtonStatus.setChecked(false);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        StatusMitra.status = 1;
 
         MyHandler.resumeMyHandler(runnablestatus);
-        super.onResume();
-
         checkVersion();
+        super.onResume();
     }
 
     private void checkVersion(){
@@ -414,11 +404,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void locationAccessChecker() {
-        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        try {
+            final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            buildAlertMessageNoGps();
-        }
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER) && !manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                buildAlertMessageNoGps();
+            }
+        }catch (Exception e){e.printStackTrace();}
+
     }
 
     private void buildAlertMessageNoGps() {
@@ -447,8 +440,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPause() {
-        MyHandler.pauseMyHandler(runnablestatus);
-        stopService(new Intent(MainActivity.this, IntervalService.class));
+        //MyHandler.pauseMyHandler(runnablestatus);
+        //stopService(new Intent(MainActivity.this, IntervalService.class));
         super.onPause();
     }
 
@@ -735,6 +728,22 @@ public class MainActivity extends AppCompatActivity
         menu_off.setVisible(true);
          */
 
+        if(isBatal){
+            isBatal = false;
+            sStatusAvail = "0";
+        }
+        try {
+            if(switchButtonStatus != null){
+
+                if(sStatusAvail.equals("1")){
+                    switchButtonStatus.setChecked(true);
+                }else{
+                    switchButtonStatus.setChecked(false);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         return true;
     }

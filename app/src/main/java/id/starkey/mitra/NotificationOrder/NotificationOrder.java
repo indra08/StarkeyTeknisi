@@ -1,6 +1,7 @@
 package id.starkey.mitra.NotificationOrder;
 
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +34,7 @@ import id.starkey.mitra.Kunci.OrderKunciActivity;
 
 import id.starkey.mitra.R;
 import id.starkey.mitra.RequestHandler;
+import id.starkey.mitra.Utilities.StatusMitra;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +45,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import static id.starkey.mitra.Firebase.MyNotificationManager.NOTIFICATION_ID;
 
 public class NotificationOrder extends AppCompatActivity implements View.OnClickListener {
 
@@ -130,6 +134,8 @@ public class NotificationOrder extends AppCompatActivity implements View.OnClick
 
         myCountDownTimer = new CountDownTimer(20000, 100){
             public void onTick(long millisUntilFinished) {
+
+                StatusMitra.status = 2;
                 String jdl = "Terima Order"+" "+" "+" "+" "+" "+" "+" " +" " +" " +" " +new SimpleDateFormat("ss").format(new Date( millisUntilFinished));
                 //bTerima.setText("Terima Order"+" "+" " +" " +" " +" " +new SimpleDateFormat("ss").format(new Date( millisUntilFinished)));
                 bTerimaOrder.setText(jdl);
@@ -139,6 +145,8 @@ public class NotificationOrder extends AppCompatActivity implements View.OnClick
                 //bTerima.setText("done!");
                 //Toast.makeText(NotificationOrder.this, "onFinish toast", Toast.LENGTH_SHORT).show();
                 //dialog.dismiss();
+                NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancelAll();
                 mitraDeclinedOrder();
                 finish();
                 //Intent mainBack = new Intent(NotificationOrder.this, MainActivity.class);

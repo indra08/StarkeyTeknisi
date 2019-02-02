@@ -139,7 +139,7 @@ public class FragmentHome extends Fragment implements
     private LocationSettingsRequest mLocationSettingsRequest;
     private SettingsClient mSettingsClient;
     private static final int REQUEST_CHECK_SETTINGS = 0x1;
-    private Boolean mRequestingLocationUpdates;
+    private Boolean mRequestingLocationUpdates = false;
     private Location mCurrentLocation;
     private boolean isUpdateLocation = false;
 

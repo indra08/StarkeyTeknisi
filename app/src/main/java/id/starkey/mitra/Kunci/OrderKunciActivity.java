@@ -89,7 +89,7 @@ public class OrderKunciActivity extends AppCompatActivity implements
     private String sLayanan, sKunci, sFotoKunci, sKeterangan;
     private Context mContext;
     private double latMitra, lngMitra;
-    private String sLatTrackMitra, sLngTrackMitra;
+    private String sLatTrackMitra = "-7.0160395", sLngTrackMitra = "110.4630368";
     private String sJarakKm;
     private String sRincianHargaAwal, sRincianBiayaLain, sRincianTips, sRincianGrandTotal;
 
@@ -365,6 +365,7 @@ public class OrderKunciActivity extends AppCompatActivity implements
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0.5f, new android.location.LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
+
                         LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
                         latMitra = currentLocation.latitude;
                         lngMitra = currentLocation.longitude;
@@ -393,6 +394,8 @@ public class OrderKunciActivity extends AppCompatActivity implements
 
                 Location locationNet = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
+                if(locationNet != null){
+
                     double lattiNet = locationNet.getLatitude();
                     double longiNet = locationNet.getLongitude();
 
@@ -400,7 +403,7 @@ public class OrderKunciActivity extends AppCompatActivity implements
                     sLngTrackMitra = String.valueOf(longiNet);
 
                     //LatLng myPos = new LatLng(latti, longi);
-
+                }
             }
         }
     }

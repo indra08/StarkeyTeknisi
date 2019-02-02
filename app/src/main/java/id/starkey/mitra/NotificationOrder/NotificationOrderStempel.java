@@ -1,6 +1,7 @@
 package id.starkey.mitra.NotificationOrder;
 
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +32,7 @@ import id.starkey.mitra.ConfigLink;
 import id.starkey.mitra.R;
 import id.starkey.mitra.RequestHandler;
 import id.starkey.mitra.Stempel.OrderStempelActivity;
+import id.starkey.mitra.Utilities.StatusMitra;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +44,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static id.starkey.mitra.Firebase.MyNotificationManager.NOTIFICATION_ID;
 import static id.starkey.mitra.NotificationOrder.NotificationOrder.REQUEST_LOCATION;
 
 public class NotificationOrderStempel extends AppCompatActivity implements View.OnClickListener {
@@ -80,6 +83,7 @@ public class NotificationOrderStempel extends AppCompatActivity implements View.
         Bundle bundle = getIntent().getExtras();
         inboxPesan = bundle.getString("messageStempel");
         jenisTrx = bundle.getString("jenisTrxStempel");
+
         //Log.d("payloadstemp", inboxPesan);
 
         //json string to json object
@@ -134,12 +138,17 @@ public class NotificationOrderStempel extends AppCompatActivity implements View.
 
         myCountDownTimer = new CountDownTimer(20000, 100){
             public void onTick(long millisUntilFinished) {
+
+                StatusMitra.status = 2;
                 String jdl = "Terima Order"+" "+" "+" "+" "+" "+" "+" " +" " +" " +" " +new SimpleDateFormat("ss").format(new Date( millisUntilFinished));
                 //bTerima.setText("Terima Order"+" "+" " +" " +" " +" " +new SimpleDateFormat("ss").format(new Date( millisUntilFinished)));
                 bTerima.setText(jdl);
             }
 
             public void onFinish() {
+
+                NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                notificationManager.cancelAll();
                 mitraDeclinedOrderStempel();
                 finish();
             }
