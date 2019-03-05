@@ -15,8 +15,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
-    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS" />-->
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" /> <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!--
      The following two permissions are not required to use
@@ -40,15 +39,17 @@
         android:xlargeScreens="true" />
 
     <application
-        android:name="id.starkey.mitra.Apps"
+        android:name=".Apps"
         android:allowBackup="true"
         android:icon="@mipmap/icon_starkey_mitra_curved"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_starkey_mitra_curved"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".JasaLain.HistoryJasaLain"></activity>
+        <activity android:name=".JasaLain.HomeJasaLain" />
         <activity
-            android:name="id.starkey.mitra.SplashScreen.SplashActivity"
+            android:name=".SplashScreen.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -57,9 +58,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- meta data map -->
+        </activity> <!-- meta data map -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -71,92 +70,90 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBethvwb6wjZDNC0JPyUcjdXtfYhcJWWCQ" />
         -->
+        <activity
+            android:name=".MapsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Kunci.OrderKunciActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Kunci.ProsesOrderKunciActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".History.HistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Statistik.StatistikActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TransaksiBahan.TransaksiBahanActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PedomanMitra.PedomanMitraActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login.WelcomeBackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Stempel.OrderStempelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Stempel.ProsesOrderStempelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Stempel.BatalOrderStempelActivity"
+            android:screenOrientation="portrait" />
 
-        <activity
-            android:name="id.starkey.mitra.MapsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Kunci.OrderKunciActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Kunci.ProsesOrderKunciActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.History.HistoryActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Statistik.StatistikActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.TransaksiBahan.TransaksiBahanActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.PedomanMitra.PedomanMitraActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Login.WelcomeBackActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Stempel.OrderStempelActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Stempel.ProsesOrderStempelActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.Stempel.BatalOrderStempelActivity"
-            android:screenOrientation="portrait" />
-
-        <service android:name="id.starkey.mitra.Firebase.MyFirebaseInstanceIdService">
+        <service android:name=".Firebase.MyFirebaseInstanceIdService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="id.starkey.mitra.Firebase.MyFirebaseMessagingService">
+        <service android:name=".Firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- defining the background service class -->
-        <service android:name="id.starkey.mitra.Service.IntervalService" />
+        </service> <!-- defining the background service class -->
+        <service android:name=".Service.IntervalService" />
 
         <activity
-            android:name="id.starkey.mitra.NotificationOrder.NotificationOrder"
-            android:showOnLockScreen="true"
+            android:name=".NotificationOrder.NotificationOrder"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true" />
+        <activity
+            android:name=".Stempel.FixOrderStempelActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.Stempel.FixOrderStempelActivity"
+            android:name=".NotificationOrder.NotificationOrderStempel"
+            android:screenOrientation="portrait"
+            android:showOnLockScreen="true" />
+        <activity
+            android:name=".Stempel.PilihProdusenStemp.PilihProdusenStempelActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.NotificationOrder.NotificationOrderStempel"
-            android:showOnLockScreen="true"
+            android:name=".Stempel.RincianTrxStempel.RincianTrxStempelActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.Stempel.PilihProdusenStemp.PilihProdusenStempelActivity"
+            android:name=".Kunci.RincianTrxKunci.RincianTrxKunciActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.Stempel.RincianTrxStempel.RincianTrxStempelActivity"
+            android:name=".HistoryDetail.HistoryDetailActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.Kunci.RincianTrxKunci.RincianTrxKunciActivity"
+            android:name=".Kunci.EnlargeImgKunci.EnlargeImgKunci"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.HistoryDetail.HistoryDetailActivity"
+            android:name=".TransaksiBahan.DetailTransaksiBahan.DetailTransaksiBahanActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.Kunci.EnlargeImgKunci.EnlargeImgKunci"
+            android:name=".UbahPassword.UbahPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="id.starkey.mitra.TransaksiBahan.DetailTransaksiBahan.DetailTransaksiBahanActivity"
+            android:name=".Login.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="id.starkey.mitra.UbahPassword.UbahPasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name="id.starkey.mitra.Login.LoginActivity"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

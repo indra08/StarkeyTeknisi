@@ -41,6 +41,7 @@ import id.starkey.mitra.BuildConfig;
 import id.starkey.mitra.ConfigLink;
 import id.starkey.mitra.Firebase.MyFirebaseInstanceIdService;
 import id.starkey.mitra.Firebase.SharedPrefManager;
+import id.starkey.mitra.JasaLain.HomeJasaLain;
 import id.starkey.mitra.MainActivity;
 import id.starkey.mitra.R;
 import id.starkey.mitra.RequestHandler;
@@ -205,7 +206,8 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
         if (cek1.length() > 0){
             //Intent i = new Intent(LoginActivity.this, WelcomeBackActivity.class);
-            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            //Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            Intent i = new Intent(LoginActivity.this, HomeJasaLain.class);
             startActivity(i);
             finish();
         }
@@ -431,7 +433,8 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                                 saveAttUser(id, nama, phone, email, token, role);
                                 saveFirebaseToken(tokenfirebase);
 
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeJasaLain.class);
                                 startActivity(intent);
                                 finish();
 

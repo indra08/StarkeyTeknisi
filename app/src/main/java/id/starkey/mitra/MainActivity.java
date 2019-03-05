@@ -271,7 +271,9 @@ public class MainActivity extends AppCompatActivity
         if(isBatal){
             isBatal = false;
             sStatusAvail = "0";
+            try { switchButtonStatus.setChecked(false); }catch (Exception e){e.printStackTrace();}
             updatePosisiMitra(sStatusAvail, sLat, sLng, sFirebaseToken);
+
         }
 
         StatusMitra.status = 1;
