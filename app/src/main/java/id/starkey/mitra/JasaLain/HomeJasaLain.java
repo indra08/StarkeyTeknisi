@@ -9,21 +9,46 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import id.starkey.mitra.BuildConfig;
 import id.starkey.mitra.ConfigLink;
@@ -33,22 +58,32 @@ import id.starkey.mitra.Login.LoginActivity;
 import id.starkey.mitra.MainActivity;
 import id.starkey.mitra.PedomanMitra.PedomanMitraActivity;
 import id.starkey.mitra.R;
+import id.starkey.mitra.RequestHandler;
 import id.starkey.mitra.Statistik.StatistikActivity;
 import id.starkey.mitra.TransaksiBahan.TransaksiBahanActivity;
 import id.starkey.mitra.UbahPassword.UbahPasswordActivity;
 import id.starkey.mitra.Utilities.CustomItem;
+import id.starkey.mitra.Utilities.ItemValidation;
+import id.starkey.mitra.Utilities.SessionManager;
 
 public class HomeJasaLain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private Context context;
     private NavigationView navigationView;
     private Drawable transparentDrawable = new ColorDrawable(Color.TRANSPARENT);
-    Toolbar toolbar;
+    private Toolbar toolbar;
     private TextView headerName, headerEmail, headerPhone;
     private String sFirebaseToken = "";
     private ListView lvOrder;
     private List<CustomItem> masterList = new ArrayList<>();
     private ListOrderJLAdapter adapter;
+    private int start = 0, count = 10;
+    private boolean isLoading = false;
+    private View footerList;
+    private SessionManager session;
+    private ItemValidation iv = new ItemValidation();
+    private SwipeRefreshLayout srlData;
+    public static boolean isOrderLain = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +94,7 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Pesanan anda");
         context = this;
+        session = new SessionManager(context);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -113,22 +149,191 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
         initUI();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(isOrderLain){
+
+            isOrderLain = false;
+            Intent intent = new Intent(context, HistoryJasaLain.class);
+            startActivity(intent);
+        }else{
+
+            initData();
+        }
+    }
+
     private void initUI() {
 
         lvOrder = (ListView) findViewById(R.id.lv_order);
+        srlData = (SwipeRefreshLayout) findViewById(R.id.sfl_data);
         masterList = new ArrayList<>();
+        isLoading = false;
+        start = 0;
+        LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        footerList = li.inflate(R.layout.footer_list, null);
+
+        lvOrder.addFooterView(footerList);
         adapter = new ListOrderJLAdapter((Activity) context, masterList);
+        lvOrder.removeFooterView(footerList);
         lvOrder.setAdapter(adapter);
 
-        //dummy
-        masterList.clear();
-        masterList.add(new CustomItem("1", "2019-02-28 20:10:11", "Indra", "Potong Rambut, Smoothing", "50000", "12 KM, Jl. Majapahit No. 53"));
-        masterList.add(new CustomItem("2", "2019-03-01 20:10:11", "Maul", "Potong Rambut", "50000", "11 KM, Jl. Majapahit No. 53"));
-        masterList.add(new CustomItem("3", "2019-03-02 20:10:11", "Lana", "Smoothing", "50000", "13 KM, Jl. Majapahit No. 53"));
-        masterList.add(new CustomItem("4", "2019-03-03 20:10:11", "Husni", "Creambath", "50000", "10 KM, Jl. Majapahit No. 53"));
-        masterList.add(new CustomItem("5", "2019-03-04 20:10:11", "Muba", "Potong Rambut", "50000", "12 KM, Jl. Majapahit No. 53"));
+        lvOrder.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
 
-        adapter.notifyDataSetChanged();
+                int threshold = 1;
+                int total = lvOrder.getCount();
+
+                if (i == SCROLL_STATE_IDLE) {
+                    if (lvOrder.getLastVisiblePosition() >= total - threshold && !isLoading) {
+
+                        isLoading = true;
+                        start += count;
+                        initData();
+                    }
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+            }
+        });
+
+        lvOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                CustomItem item = (CustomItem) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(context, DetailOrerJL.class);
+                intent.putExtra("id", item.getItem1());
+                startActivity(intent);
+            }
+        });
+
+
+        srlData.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                start = 0;
+                initData();
+            }
+        });
+    }
+
+    private void initData() {
+
+        isLoading = true;
+        lvOrder.addFooterView(footerList);
+
+        JSONArray jStatus = new JSONArray();
+        jStatus.put("1");
+
+        JSONObject jBody = new JSONObject();
+
+        try {
+            jBody.put("keyword","");
+            jBody.put("start", String.valueOf(start));
+            jBody.put("count", String.valueOf(count));
+            jBody.put("id", "");
+            jBody.put("id_toko", "");
+            jBody.put("id_mitra", session.getID());
+            jBody.put("id_user", "");
+            jBody.put("datestart", "");
+            jBody.put("dateend", "");
+            jBody.put("status", jStatus);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request_json = new JsonObjectRequest(Request.Method.POST,
+                ConfigLink.getTransaksi
+                , jBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        srlData.setRefreshing(false);
+                        lvOrder.removeFooterView(footerList);
+                        isLoading = false;
+                        String message = "Terjadi kesalahan saat memuat data, harap ulangi";
+                        if(start == 0) masterList.clear();
+
+                        try {
+                            String status = response.getJSONObject("metadata").getString("status");
+                            message = response.getJSONObject("metadata").getString("message");
+
+                            if (status.equals("200")){
+
+                                JSONArray ja = response.getJSONArray("response");
+                                for(int i = 0; i < ja.length(); i++){
+
+                                    JSONObject jo = ja.getJSONObject(i);
+                                    masterList.add(new CustomItem(
+                                            jo.getString("id")
+                                            ,jo.getString("insert_at")
+                                            ,jo.getString("first_name")
+                                            ,jo.getString("produk")
+                                            ,jo.getString("total")
+                                            ,iv.parseNullString(jo.getString("state"))
+                                            ,iv.parseNullString(jo.getString("keterangan"))
+                                            ,jo.getString("status")
+                                    ));
+                                }
+                            }else{
+                                if(start == 0) Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                            }
+
+                        }catch (JSONException ex){
+                            ex.printStackTrace();
+                            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                srlData.setRefreshing(false);
+                adapter.notifyDataSetChanged();
+                lvOrder.removeFooterView(footerList);
+                isLoading = false;
+                String message = null;
+                if (error instanceof NetworkError) {
+                    message = "Tidak ada koneksi Internet";
+                } else if (error instanceof ServerError) {
+                    message = "Server tidak ditemukan";
+                } else if (error instanceof AuthFailureError) {
+                    message = "Authentification Failed";
+                } else if (error instanceof ParseError) {
+                    message = "Parsing data Error";
+                } else if (error instanceof TimeoutError) {
+                    message = "Connection TimeOut";
+                }
+                Toast.makeText(getApplicationContext(),message, Toast.LENGTH_LONG).show();
+            }
+        }){
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Client-Service", "starkey");
+                params.put("Auth-Key", "44b7eb3bbdccdfdaa202d5bfd3541458");
+                return params;
+            }
+        };
+
+        int socketTimeout = 30000; //30 detik
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request_json.setRetryPolicy(policy);
+        RequestHandler.getInstance(this).addToRequestQueue(request_json);
     }
 
     private void getFirebaseToken(){

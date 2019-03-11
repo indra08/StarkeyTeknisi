@@ -76,6 +76,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
     private Context mContext;
     private GPSTracker gps;
     private static final int REQUEST_PERMISSIONS = 20;
+    private String roleUser = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +164,7 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
     private void getPref(){
         SharedPreferences custDetails = getSharedPreferences(ConfigLink.loginPref, MODE_PRIVATE);
         String userEmail = custDetails.getString("emailUser", "");
+        roleUser = custDetails.getString("roleUser", "");
         etUsername.setText(userEmail);
     }
 
@@ -206,10 +208,19 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
 
         if (cek1.length() > 0){
             //Intent i = new Intent(LoginActivity.this, WelcomeBackActivity.class);
-            //Intent i = new Intent(LoginActivity.this, MainActivity.class);
-            Intent i = new Intent(LoginActivity.this, HomeJasaLain.class);
-            startActivity(i);
-            finish();
+
+            if(roleUser.equals("3")){
+
+                Intent i = new Intent(LoginActivity.this, HomeJasaLain.class);
+                startActivity(i);
+                finish();
+            }else{
+
+                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+
         }
     }
 
@@ -433,10 +444,18 @@ public class LoginActivity extends RuntimePermissionsActivity implements View.On
                                 saveAttUser(id, nama, phone, email, token, role);
                                 saveFirebaseToken(tokenfirebase);
 
-                                //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                Intent intent = new Intent(LoginActivity.this, HomeJasaLain.class);
-                                startActivity(intent);
-                                finish();
+                                if(role.equals("3")){
+
+                                    Intent intent = new Intent(LoginActivity.this, HomeJasaLain.class);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
 
                                 //Toast.makeText(LoginActivity.this, "Login sukses dan save pref", Toast.LENGTH_SHORT).show();
 

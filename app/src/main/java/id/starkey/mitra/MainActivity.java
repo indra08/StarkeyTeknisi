@@ -467,8 +467,6 @@ public class MainActivity extends AppCompatActivity
         String tokenId = custDetails.getString("tokenIdUser", "");
         String role = custDetails.getString("roleUser", "");
 
-
-
         headerName.setText(nama);
         headerEmail.setText(email);
         headerPhone.setText(hp);

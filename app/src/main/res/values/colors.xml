@@ -23,6 +23,12 @@
     <color name="red">#ff0000</color>
     <color name="green_bright">#10ec22</color>
     <color name="color_white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="color_gb">#0BB172</color>
+    <color name="color_red">#e25b4e</color>
+    <color name="color_red_active">#d43425</color>
+    <color name="color_yellow">#f0f633</color>
+    <color name="color_yellow_active">#d1d706</color>
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>

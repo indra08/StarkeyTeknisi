@@ -693,7 +693,7 @@ public class ItemValidation {
 
     public String parseNullString(String s){
         String result = "";
-        if(s != null){
+        if(!s.equals("null") && !s.equals(null) && s != null){
             result = s;
         }
         return result;

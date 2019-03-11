@@ -7,6 +7,7 @@ package id.starkey.mitra;
 public class ConfigLink {
 
     private static String BASE_URL = "https://api.starkey.id";
+    private static String base_url_v1 = "http://admin.starkey.id/";
 
     //LOGIN
     public static final String login = "https://api.starkey.id/api/mitra/login";
@@ -123,4 +124,8 @@ public class ConfigLink {
 
     //API V1.2
     public static final String getVersion = BASE_URL + "/api/v1.2/update_versi";
+
+    // Jasa lain
+    public static final String getTransaksi = base_url_v1 + "api-lain/Transaksi/view_order/";
+    public static final String updateStatusTransaksi = base_url_v1 + "api-lain/Transaksi/update_status/";
 }
