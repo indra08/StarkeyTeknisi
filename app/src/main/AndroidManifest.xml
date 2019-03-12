@@ -46,14 +46,19 @@
         android:roundIcon="@mipmap/icon_starkey_mitra_curved"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JasaLain.DetailOrerJL"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".JasaLain.HistoryJasaLain"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".JasaLain.HomeJasaLain"
+        <activity android:name=".JasaLain.PengaturanToko"></activity>
+        <activity
+            android:name=".JasaLain.DetailOrerJL"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JasaLain.HistoryJasaLain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".JasaLain.HomeJasaLain"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="ACT_MAIN" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

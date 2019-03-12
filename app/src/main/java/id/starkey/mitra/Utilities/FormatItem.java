@@ -12,6 +12,7 @@ public class FormatItem {
     public static final String formatDateTime = "dd/MM/yyyy HH:mm:ss";
     public static final String formatTime = "HH:mm:ss";
     public static final String formatDateDisplay = "dd/MM/yyyy";
+    public static final String formatTimeSimple = "HH:mm";
     public static final String formatDateTimeDisplay = "dd/MM/yyyy HH:mm";
     public static final String formatDateTimePure = "yyyyMMddHHmmss";
 }

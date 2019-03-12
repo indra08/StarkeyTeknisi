@@ -9,16 +9,91 @@
     tools:showIn="@layout/app_bar_main1"
     android:id="@+id/content_frame">
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp">
 
+        <RelativeLayout
+            android:id="@+id/rv_footer"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/margin_default"
+            android:background="@drawable/home_bg">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saldo Anda"
+                android:textStyle="bold"
+                android:textColor="@color/colorHitam"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_saldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp 0"
+                android:textStyle="bold"
+                android:textColor="@color/colorHitam"
+                android:textSize="18sp"
+                android:layout_toRightOf="@+id/tv_title"
+                android:layout_marginLeft="5dp"/>
+
+            <RelativeLayout
+                android:id="@+id/mainBlack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tv_saldo"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/colorHitam"
+                android:layout_marginBottom="6dp"
+                android:padding="@dimen/margin_default">
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/rb_mitra"
+                    style="@style/Widget.MaterialRatingBar.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    app:mrb_fillBackgroundStars="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/rb_mitra"
+                    android:text="0.0"
+                    android:id="@+id/tv_rating"
+                    android:layout_marginLeft="@dimen/margin_default"
+                    android:textSize="28sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_rating"
+                    android:text="dari total penilaian"
+                    android:layout_marginLeft="@dimen/margin_default"
+                    android:layout_alignParentRight="true"
+                    android:textSize="12sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="7dp"
+                    android:textColor="@color/color_white"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/rv_footer"
+            android:layout_marginBottom="@dimen/margin_default"
             android:id="@+id/sfl_data">
 
             <ListView

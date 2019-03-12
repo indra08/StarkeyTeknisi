@@ -364,8 +364,7 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
                                 //tvMitra.setText(jHeader.getString(""));
                                 tvAlamat.setText(jHeader.getString("state"));
                                 tvSubtotal.setText(iv.ChangeToCurrencyFormat(jHeader.getString("subtotal")));
-                                tvBiayaJemput.setText(iv.ChangeToCurrencyFormat(jHeader.getString("subtotal")));
-                                tvSubtotal.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total_ongkir")));
+                                tvBiayaJemput.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total_ongkir")));
                                 tvTotal.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total")));
                                 currentStatus = jHeader.getString("status");
                                 btnProses.setText(getNextStatus(currentStatus));

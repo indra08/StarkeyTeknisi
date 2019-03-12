@@ -65,6 +65,7 @@ import id.starkey.mitra.UbahPassword.UbahPasswordActivity;
 import id.starkey.mitra.Utilities.CustomItem;
 import id.starkey.mitra.Utilities.ItemValidation;
 import id.starkey.mitra.Utilities.SessionManager;
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 public class HomeJasaLain extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -84,6 +85,8 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
     private ItemValidation iv = new ItemValidation();
     private SwipeRefreshLayout srlData;
     public static boolean isOrderLain = false;
+    private TextView tvSaldo, tvRating;
+    private MaterialRatingBar rbMitra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +176,9 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
         start = 0;
         LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         footerList = li.inflate(R.layout.footer_list, null);
+        tvSaldo = (TextView) findViewById(R.id.tv_saldo);
+        rbMitra = (MaterialRatingBar) findViewById(R.id.rb_mitra);
+        tvRating = (TextView) findViewById(R.id.tv_rating);
 
         lvOrder.addFooterView(footerList);
         adapter = new ListOrderJLAdapter((Activity) context, masterList);
@@ -292,6 +298,7 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
                             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                         }
 
+                        getDataRating();
                         adapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -303,6 +310,82 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
                 adapter.notifyDataSetChanged();
                 lvOrder.removeFooterView(footerList);
                 isLoading = false;
+                String message = null;
+                if (error instanceof NetworkError) {
+                    message = "Tidak ada koneksi Internet";
+                } else if (error instanceof ServerError) {
+                    message = "Server tidak ditemukan";
+                } else if (error instanceof AuthFailureError) {
+                    message = "Authentification Failed";
+                } else if (error instanceof ParseError) {
+                    message = "Parsing data Error";
+                } else if (error instanceof TimeoutError) {
+                    message = "Connection TimeOut";
+                }
+                Toast.makeText(getApplicationContext(),message, Toast.LENGTH_LONG).show();
+            }
+        }){
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Client-Service", "starkey");
+                params.put("Auth-Key", "44b7eb3bbdccdfdaa202d5bfd3541458");
+                return params;
+            }
+        };
+
+        int socketTimeout = 30000; //30 detik
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request_json.setRetryPolicy(policy);
+        RequestHandler.getInstance(this).addToRequestQueue(request_json);
+    }
+
+    private void getDataRating() {
+
+        JSONObject jBody = new JSONObject();
+
+        try {
+            jBody.put("id_mitra",session.getID());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest request_json = new JsonObjectRequest(Request.Method.POST,
+                ConfigLink.getRatingMitra
+                , jBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        String message = "Terjadi kesalahan saat memuat data, harap ulangi";
+                        try {
+                            String status = response.getJSONObject("metadata").getString("status");
+                            message = response.getJSONObject("metadata").getString("message");
+
+                            if (status.equals("200")){
+
+                                JSONObject jo = response.getJSONObject("response");
+                                tvSaldo.setText(iv.ChangeToRupiahFormat(jo.getString("saldo_akhir")));
+                                tvRating.setText(jo.getString("rating"));
+                                rbMitra.setRating(iv.parseNullFloat(jo.getString("rating")));
+
+                            }else{
+                                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                            }
+
+                        }catch (JSONException ex){
+                            ex.printStackTrace();
+                            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
                 String message = null;
                 if (error instanceof NetworkError) {
                     message = "Tidak ada koneksi Internet";
@@ -368,7 +451,7 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
         //initializing the fragment object which is selected
         switch (id){
             case R.id.nav_aturan_toko:
-                Intent intenSyarat = new Intent(context, TransaksiBahanActivity.class);
+                Intent intenSyarat = new Intent(context, PengaturanToko.class);
                 startActivity(intenSyarat);
                 break;
             case R.id.nav_history:

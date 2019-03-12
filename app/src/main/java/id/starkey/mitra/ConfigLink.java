@@ -128,4 +128,6 @@ public class ConfigLink {
     // Jasa lain
     public static final String getTransaksi = base_url_v1 + "api-lain/Transaksi/view_order/";
     public static final String updateStatusTransaksi = base_url_v1 + "api-lain/Transaksi/update_status/";
+    public static final String getRatingMitra = base_url_v1 + "api-lain/Toko/saldo_rating/";
+    public static final String getMasterHari = base_url_v1 + "api-lain/Toko/ms_hari/";
 }
