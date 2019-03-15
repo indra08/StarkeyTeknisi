@@ -14,6 +14,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -130,6 +131,7 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
     private Button btnProses;
     private String currentStatus = "";
     private SessionManager session;
+    private String phoneUser = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,11 +190,18 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                Uri smsCust = Uri.parse("sms:" + phoneUser);
+                Intent surfSms = new Intent(Intent.ACTION_VIEW, smsCust);
+                startActivity(surfSms);
+
             }
         });
         floatingActionButton2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                Uri callCust = Uri.parse("tel:" + phoneUser);
+                Intent surf = new Intent(Intent.ACTION_DIAL, callCust);
+                startActivity(surf);
             }
         });
 
@@ -368,6 +377,7 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
                                 tvTotal.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total")));
                                 currentStatus = jHeader.getString("status");
                                 btnProses.setText(getNextStatus(currentStatus));
+                                phoneUser = "0"+jHeader.getString("phone");
                                 // Detail
                                 JSONArray ja = response.getJSONObject("response").getJSONArray("detail");
                                 for (int i = 0; i < ja.length(); i++) {

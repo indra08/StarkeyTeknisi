@@ -130,4 +130,7 @@ public class ConfigLink {
     public static final String updateStatusTransaksi = base_url_v1 + "api-lain/Transaksi/update_status/";
     public static final String getRatingMitra = base_url_v1 + "api-lain/Toko/saldo_rating/";
     public static final String getMasterHari = base_url_v1 + "api-lain/Toko/ms_hari/";
+    public static final String simpanJadwalToko = base_url_v1 + "api-lain/Toko/add_setting/";
+    public static final String getJadwalToko = base_url_v1 + "api-lain/Toko/jadwal/";
+    public static final String getChartToko = base_url_v1 + "api-lain/Transaksi/chart/";
 }

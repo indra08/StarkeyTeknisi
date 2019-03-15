@@ -11,13 +11,13 @@
             android:title="Home"
             android:visible="false"/>
         <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/history_sidebar_mockup_starkey_apps_fix"
+            android:title="Transaksi &amp; History" />
+        <item
             android:id="@+id/nav_aturan_toko"
             android:icon="@drawable/syarat_sidebar_mockup_starkey_apps_fix"
             android:title="Pengaturan Toko" />
-        <item
-            android:id="@+id/nav_history"
-            android:icon="@drawable/history_sidebar_mockup_starkey_apps_fix"
-            android:title="History" />
         <item
             android:id="@+id/nav_statistik"
             android:icon="@drawable/bantuan_sidebar_mockup_starkey_apps_fix"

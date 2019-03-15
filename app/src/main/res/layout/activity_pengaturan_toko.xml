@@ -23,10 +23,21 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <Button
+        android:id="@+id/btn_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_button_kotak"
+        android:text="Simpan"
+        android:textColor="@color/colorPutih"/>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lv_jadwal"
+        android:divider="@null"
+        android:layout_above="@id/btn_simpan"
         android:layout_below="@id/appBar"></ListView>
 
 </RelativeLayout>

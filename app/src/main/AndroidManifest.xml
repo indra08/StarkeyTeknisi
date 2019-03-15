@@ -46,7 +46,10 @@
         android:roundIcon="@mipmap/icon_starkey_mitra_curved"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JasaLain.PengaturanToko"></activity>
+        <activity android:name=".JasaLain.StatisticJasaLainActivity"></activity>
+        <activity
+            android:name=".JasaLain.PengaturanToko"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".JasaLain.DetailOrerJL"
             android:screenOrientation="portrait" />

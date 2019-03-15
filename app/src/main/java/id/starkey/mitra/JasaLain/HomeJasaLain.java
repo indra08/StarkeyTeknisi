@@ -459,7 +459,7 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
                 break;
             case R.id.nav_statistik:
-                Intent intenBan = new Intent(context, StatistikActivity.class);
+                Intent intenBan = new Intent(context, StatisticJasaLainActivity.class);
                 startActivity(intenBan);
                 break;
             case R.id.nav_ubahpass:
