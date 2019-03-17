@@ -174,6 +174,9 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
         btnBatal = (Button) findViewById(R.id.btn_batal);
         btnProses = (Button) findViewById(R.id.btn_proses);
 
+        btnBatal.setVisibility(View.GONE);
+        btnProses.setVisibility(View.GONE);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
 
@@ -376,6 +379,15 @@ public class DetailOrerJL extends AppCompatActivity implements OnMapReadyCallbac
                                 tvBiayaJemput.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total_ongkir")));
                                 tvTotal.setText(iv.ChangeToCurrencyFormat(jHeader.getString("total")));
                                 currentStatus = jHeader.getString("status");
+                                if(currentStatus.equals("5") || currentStatus.equals("6") || currentStatus.equals("7")){
+
+                                    btnBatal.setVisibility(View.GONE);
+                                    btnProses.setVisibility(View.GONE);
+                                }else{
+                                    btnBatal.setVisibility(View.VISIBLE);
+                                    btnProses.setVisibility(View.VISIBLE);
+                                }
+
                                 btnProses.setText(getNextStatus(currentStatus));
                                 phoneUser = "0"+jHeader.getString("phone");
                                 // Detail

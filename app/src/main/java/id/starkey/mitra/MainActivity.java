@@ -52,6 +52,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import id.starkey.mitra.History.HistoryActivity;
 import id.starkey.mitra.Home.FragmentHome;
+import id.starkey.mitra.JasaLain.HomeJasaLain;
 import id.starkey.mitra.Kunci.OrderKunciActivity;
 import id.starkey.mitra.Login.LoginActivity;
 import id.starkey.mitra.PedomanMitra.PedomanMitraActivity;
@@ -65,6 +66,7 @@ import id.starkey.mitra.Utilities.GPSTracker;
 import id.starkey.mitra.BuildConfig;
 import id.starkey.mitra.R;
 import id.starkey.mitra.Utilities.ItemValidation;
+import id.starkey.mitra.Utilities.SessionManager;
 import id.starkey.mitra.Utilities.StatusMitra;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity
     private SwitchButton switchButtonStatus;
     public static String sStatusAvail = "0";
     private GoogleApiClient googleApiClient;
+    private SessionManager session;
 
     //interval
     //Handler h = new Handler();
@@ -145,6 +148,14 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setTitle("Menu");
 
         mContext = this;
+        session = new SessionManager(mContext);
+
+        if(session.getRole().equals("3")){ // mitra jasa lain
+
+            Intent i = new Intent(mContext, HomeJasaLain.class);
+            startActivity(i);
+            finish();
+        }
 
         MyHandler.getHandler();
 

@@ -105,6 +105,13 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        if(!session.getRole().equals("3")){ // mitra jasa kunci dan stample
+
+            Intent i = new Intent(context, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -369,7 +376,7 @@ public class HomeJasaLain extends AppCompatActivity implements NavigationView.On
 
                                 JSONObject jo = response.getJSONObject("response");
                                 tvSaldo.setText(iv.ChangeToRupiahFormat(jo.getString("saldo_akhir")));
-                                tvRating.setText(jo.getString("rating"));
+                                tvRating.setText(iv.doubleToString(iv.parseNullDouble(jo.getString("rating")),"1"));
                                 rbMitra.setRating(iv.parseNullFloat(jo.getString("rating")));
 
                             }else{
